@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DareToDaSHModelStoreContainer" CdmEntityContainer="DareToDaSHEntities2">
+    <EntitySetMapping Name="Datasets">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Dataset">
+        <MappingFragment StoreEntitySet="Datasets">
+          <ScalarProperty Name="webURL" ColumnName="webURL" />
+          <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+          <ScalarProperty Name="PMD_DatasetID" ColumnName="PMD_DatasetID" />
+          <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+          <ScalarProperty Name="Abrev" ColumnName="Abrev" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsLive" ColumnName="IsLive" />
+          <ScalarProperty Name="DataDate_From" ColumnName="DataDate_From" />
+          <ScalarProperty Name="DataDate_To" ColumnName="DataDate_To" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DS_Variables">
+      <EntityTypeMapping TypeName="DareToDaSHModel.DS_Variables">
+        <MappingFragment StoreEntitySet="DS_Variables">
+          <ScalarProperty Name="RequiredForDisplay" ColumnName="RequiredForDisplay" />
+          <ScalarProperty Name="DS_VariableID" ColumnName="DS_VariableID" />
+          <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+          <ScalarProperty Name="VarName" ColumnName="VarName" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="CHARACTER_MAXIMUM_LENGTH" ColumnName="CHARACTER_MAXIMUM_LENGTH" />
+          <ScalarProperty Name="Is_Identifiable" ColumnName="Is_Identifiable" />
+          <ScalarProperty Name="Required_ForLinkage" ColumnName="Required_ForLinkage" />
+          <ScalarProperty Name="Can_Release" ColumnName="Can_Release" />
+          <ScalarProperty Name="Output_CodingID" ColumnName="Output_CodingID" />
+          <ScalarProperty Name="VarDescription" ColumnName="VarDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project_Datasets">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Project_Datasets">
+        <MappingFragment StoreEntitySet="Project_Datasets">
+          <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+          <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="ExclusionCriteria" ColumnName="ExclusionCriteria" />
+          <ScalarProperty Name="InclusionCriteria" ColumnName="InclusionCriteria" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectEndDate" ColumnName="ProjectEndDate" />
+          <ScalarProperty Name="ProjectStartDate" ColumnName="ProjectStartDate" />
+          <ScalarProperty Name="ShortTitle" ColumnName="ShortTitle" />
+          <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+          <ScalarProperty Name="Cohort_Desc" ColumnName="Cohort_Desc" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="DashIdent" ColumnName="DashIdent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reseacher_Projects">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Reseacher_Projects">
+        <MappingFragment StoreEntitySet="Reseacher_Projects">
+          <ScalarProperty Name="ResearcherProjectsID" ColumnName="ResearcherProjectsID" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ResearcherID" ColumnName="ResearcherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Researchers">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Researcher">
+        <MappingFragment StoreEntitySet="Researchers">
+          <ScalarProperty Name="ResearcherID" ColumnName="ResearcherID" />
+          <ScalarProperty Name="ResearcherName" ColumnName="ResearcherName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PMD_ResearcherID" ColumnName="PMD_ResearcherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstMidName" ColumnName="FirstMidName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Researcher_Variables">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Variables">
+        <MappingFragment StoreEntitySet="Researcher_Variables">
+          <ScalarProperty Name="IsRestrictionMaxRange" ColumnName="IsRestrictionMaxRange" />
+          <ScalarProperty Name="IsRestrictionMinRange" ColumnName="IsRestrictionMinRange" />
+          <ScalarProperty Name="IsRestrictionVariabletype" ColumnName="IsRestrictionVariabletype" />
+          <ScalarProperty Name="IsRestriction" ColumnName="IsRestriction" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+          <ScalarProperty Name="Researcher_Comments" ColumnName="Researcher_Comments" />
+          <ScalarProperty Name="Output_VarName" ColumnName="Output_VarName" />
+          <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+          <ScalarProperty Name="DS_VariableID" ColumnName="DS_VariableID" />
+          <ScalarProperty Name="Researcher_VariableID" ColumnName="Researcher_VariableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Researcher_Documents">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Documents">
+        <MappingFragment StoreEntitySet="Researcher_Documents">
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="UploadedBy" ColumnName="UploadedBy" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="DocData" ColumnName="DocData" />
+          <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+          <ScalarProperty Name="DocumentDescription" ColumnName="DocumentDescription" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DocId" ColumnName="DocId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Researcher_Custom_Variables">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Custom_Variables">
+        <MappingFragment StoreEntitySet="Researcher_Custom_Variables">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+          <ScalarProperty Name="DS_Variable2_VarName" ColumnName="DS_Variable2_VarName" />
+          <ScalarProperty Name="DS_VariableID_2" ColumnName="DS_VariableID_2" />
+          <ScalarProperty Name="DS_Variable1_VarName" ColumnName="DS_Variable1_VarName" />
+          <ScalarProperty Name="DS_VariableID_1" ColumnName="DS_VariableID_1" />
+          <ScalarProperty Name="Researcher_Comments" ColumnName="Researcher_Comments" />
+          <ScalarProperty Name="Output_VarName" ColumnName="Output_VarName" />
+          <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+          <ScalarProperty Name="Researcher_Custom_VariableID" ColumnName="Researcher_Custom_VariableID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_Unsecure">
+      <EntityTypeMapping TypeName="DareToDaSHModel.Users_Unsecure">
+        <MappingFragment StoreEntitySet="Users_Unsecure">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="OutputSourceDatasets_toJson_byProjectId_DatasetID" FunctionName="DareToDaSHModel.Store.OutputSourceDatasets_toJson_byProjectId_DatasetID" />
+  </EntityContainerMapping>
+</Mapping>

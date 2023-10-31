@@ -1,0 +1,803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DareToDaSHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Datasets">
+          <Key>
+            <PropertyRef Name="DatasetID" />
+          </Key>
+          <Property Name="DatasetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PMD_DatasetID" Type="int" />
+          <Property Name="DS_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abrev" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsLive" Type="int" />
+          <Property Name="DataDate_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataDate_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="webURL" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DS_Variables">
+          <Key>
+            <PropertyRef Name="DS_VariableID" />
+          </Key>
+          <Property Name="DS_VariableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatasetID" Type="int" />
+          <Property Name="VarName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CHARACTER_MAXIMUM_LENGTH" Type="int" />
+          <Property Name="Is_Identifiable" Type="int" />
+          <Property Name="Required_ForLinkage" Type="int" />
+          <Property Name="Can_Release" Type="int" />
+          <Property Name="Output_CodingID" Type="int" />
+          <Property Name="VarDescription" Type="nvarchar(max)" />
+          <Property Name="RequiredForDisplay" Type="bit" />
+        </EntityType>
+        <EntityType Name="Project_Datasets">
+          <Key>
+            <PropertyRef Name="Project_Dataset_Id" />
+          </Key>
+          <Property Name="Project_Dataset_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="DatasetID" Type="int" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="IsSelected" Type="bit" />
+          <Property Name="DS_Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectTitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShortTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjectDescription" Type="nvarchar(max)" />
+          <Property Name="ProjectStartDate" Type="date" />
+          <Property Name="ProjectEndDate" Type="date" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="DashIdent" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cohort_Desc" Type="nvarchar(max)" />
+          <Property Name="ProjectType" Type="int" />
+          <Property Name="InclusionCriteria" Type="nvarchar(max)" />
+          <Property Name="ExclusionCriteria" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Reseacher_Projects">
+          <Key>
+            <PropertyRef Name="ResearcherProjectsID" />
+          </Key>
+          <Property Name="ResearcherProjectsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="ResearcherID" Type="int" />
+        </EntityType>
+        <EntityType Name="Researcher_Custom_Variables">
+          <Key>
+            <PropertyRef Name="Researcher_Custom_VariableID" />
+          </Key>
+          <Property Name="Researcher_Custom_VariableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Project_Dataset_Id" Type="int" />
+          <Property Name="Output_VarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Researcher_Comments" Type="nvarchar(max)" />
+          <Property Name="DS_VariableID_1" Type="int" />
+          <Property Name="DS_Variable1_VarName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DS_VariableID_2" Type="int" />
+          <Property Name="DS_Variable2_VarName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastUpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Researcher_Documents">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Name="DocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="DocumentDescription" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="50" />
+          <Property Name="DocData" Type="varbinary(max)" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="200" />
+          <Property Name="UploadedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UploadDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Researcher_Variables">
+          <Key>
+            <PropertyRef Name="Researcher_VariableID" />
+          </Key>
+          <Property Name="Researcher_VariableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DS_VariableID" Type="int" />
+          <Property Name="Project_Dataset_Id" Type="int" />
+          <Property Name="Output_VarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Researcher_Comments" Type="nvarchar(max)" />
+          <Property Name="LastUpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsRestriction" Type="int" />
+          <Property Name="IsRestrictionVariabletype" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsRestrictionMinRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsRestrictionMaxRange" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Researchers">
+          <Key>
+            <PropertyRef Name="ResearcherID" />
+          </Key>
+          <Property Name="ResearcherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResearcherName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="PMD_ResearcherID" Type="int" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstMidName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users_Unsecure">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_DS_Variables_Datasets">
+          <End Role="Datasets" Type="Self.Datasets" Multiplicity="0..1" />
+          <End Role="DS_Variables" Type="Self.DS_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Principal>
+            <Dependent Role="DS_Variables">
+              <PropertyRef Name="DatasetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Datasets_Datasets">
+          <End Role="Datasets" Type="Self.Datasets" Multiplicity="0..1" />
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Principal>
+            <Dependent Role="Project_Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Datasets_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Project_Datasets">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseacher_Projects_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+          <End Role="Reseacher_Projects" Type="Self.Reseacher_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Reseacher_Projects">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseacher_Projects_Researchers">
+          <End Role="Researchers" Type="Self.Researchers" Multiplicity="0..1" />
+          <End Role="Reseacher_Projects" Type="Self.Reseacher_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Researchers">
+              <PropertyRef Name="ResearcherID" />
+            </Principal>
+            <Dependent Role="Reseacher_Projects">
+              <PropertyRef Name="ResearcherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Researcher_Customer_Variables_Project_Datasets">
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="0..1" />
+          <End Role="Researcher_Custom_Variables" Type="Self.Researcher_Custom_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Datasets">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Principal>
+            <Dependent Role="Researcher_Custom_Variables">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Researcher_Documents_Projects">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="0..1" />
+          <End Role="Researcher_Documents" Type="Self.Researcher_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Researcher_Documents">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Researcher_Variables_Project_Datasets">
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="0..1" />
+          <End Role="Researcher_Variables" Type="Self.Researcher_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Datasets">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Principal>
+            <Dependent Role="Researcher_Variables">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="OutputSourceDatasets_toJson_byProjectId_DatasetID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="prmProjectId" Type="int" Mode="In" />
+          <Parameter Name="prmProjectDatasetID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DareToDaSHModelStoreContainer">
+          <EntitySet Name="Datasets" EntityType="Self.Datasets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DS_Variables" EntityType="Self.DS_Variables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project_Datasets" EntityType="Self.Project_Datasets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reseacher_Projects" EntityType="Self.Reseacher_Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Researcher_Custom_Variables" EntityType="Self.Researcher_Custom_Variables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Researcher_Documents" EntityType="Self.Researcher_Documents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Researcher_Variables" EntityType="Self.Researcher_Variables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Researchers" EntityType="Self.Researchers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Unsecure" EntityType="Self.Users_Unsecure" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DS_Variables_Datasets" Association="Self.FK_DS_Variables_Datasets">
+            <End Role="Datasets" EntitySet="Datasets" />
+            <End Role="DS_Variables" EntitySet="DS_Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Datasets_Datasets" Association="Self.FK_Project_Datasets_Datasets">
+            <End Role="Datasets" EntitySet="Datasets" />
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Datasets_Projects" Association="Self.FK_Project_Datasets_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseacher_Projects_Projects" Association="Self.FK_Reseacher_Projects_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Reseacher_Projects" EntitySet="Reseacher_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseacher_Projects_Researchers" Association="Self.FK_Reseacher_Projects_Researchers">
+            <End Role="Researchers" EntitySet="Researchers" />
+            <End Role="Reseacher_Projects" EntitySet="Reseacher_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Researcher_Customer_Variables_Project_Datasets" Association="Self.FK_Researcher_Customer_Variables_Project_Datasets">
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+            <End Role="Researcher_Custom_Variables" EntitySet="Researcher_Custom_Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Researcher_Documents_Projects" Association="Self.FK_Researcher_Documents_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Researcher_Documents" EntitySet="Researcher_Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Researcher_Variables_Project_Datasets" Association="Self.FK_Researcher_Variables_Project_Datasets">
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+            <End Role="Researcher_Variables" EntitySet="Researcher_Variables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DareToDaSHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dataset">
+          <Key>
+            <PropertyRef Name="DatasetID" />
+          </Key>
+          <Property Name="DatasetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PMD_DatasetID" Type="Int32" />
+          <Property Name="DS_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Abrev" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsLive" Type="Int32" />
+          <Property Name="DataDate_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataDate_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DS_Variables" Relationship="Self.FK_DS_Variables_Datasets" FromRole="Datasets" ToRole="DS_Variables" />
+          <NavigationProperty Name="Project_Datasets" Relationship="Self.FK_Project_Datasets_Datasets" FromRole="Datasets" ToRole="Project_Datasets" />
+          <Property Name="webURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DS_Variables">
+          <Key>
+            <PropertyRef Name="DS_VariableID" />
+          </Key>
+          <Property Name="DS_VariableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatasetID" Type="Int32" />
+          <Property Name="VarName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CHARACTER_MAXIMUM_LENGTH" Type="Int32" />
+          <Property Name="Is_Identifiable" Type="Int32" />
+          <Property Name="Required_ForLinkage" Type="Int32" />
+          <Property Name="Can_Release" Type="Int32" />
+          <Property Name="Output_CodingID" Type="Int32" />
+          <Property Name="VarDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dataset" Relationship="Self.FK_DS_Variables_Datasets" FromRole="DS_Variables" ToRole="Datasets" />
+          <Property Name="RequiredForDisplay" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Project_Datasets">
+          <Key>
+            <PropertyRef Name="Project_Dataset_Id" />
+          </Key>
+          <Property Name="Project_Dataset_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="DatasetID" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsSelected" Type="Boolean" />
+          <Property Name="DS_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dataset" Relationship="Self.FK_Project_Datasets_Datasets" FromRole="Project_Datasets" ToRole="Datasets" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Project_Datasets_Projects" FromRole="Project_Datasets" ToRole="Projects" />
+          <NavigationProperty Name="Researcher_Variables" Relationship="DareToDaSHModel.FK_Researcher_Variables_Project_Datasets" FromRole="Project_Datasets" ToRole="Researcher_Variables" />
+          <NavigationProperty Name="Researcher_Custom_Variables" Relationship="DareToDaSHModel.FK_Researcher_Customer_Variables_Project_Datasets" FromRole="Project_Datasets" ToRole="Researcher_Custom_Variables" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="DashIdent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Project_Datasets" Relationship="Self.FK_Project_Datasets_Projects" FromRole="Projects" ToRole="Project_Datasets" />
+          <NavigationProperty Name="Reseacher_Projects" Relationship="Self.FK_Reseacher_Projects_Projects" FromRole="Projects" ToRole="Reseacher_Projects" />
+          <Property Name="Cohort_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShortTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ProjectEndDate" Type="DateTime" Precision="0" />
+          <Property Name="ProjectType" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="InclusionCriteria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExclusionCriteria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Researcher_Documents" Relationship="DareToDaSHModel.FK_Researcher_Documents_Projects" FromRole="Project" ToRole="Researcher_Documents" />
+        </EntityType>
+        <EntityType Name="Reseacher_Projects">
+          <Key>
+            <PropertyRef Name="ResearcherProjectsID" />
+          </Key>
+          <Property Name="ResearcherProjectsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="ResearcherID" Type="Int32" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Reseacher_Projects_Projects" FromRole="Reseacher_Projects" ToRole="Projects" />
+          <NavigationProperty Name="Researcher" Relationship="Self.FK_Reseacher_Projects_Researchers" FromRole="Reseacher_Projects" ToRole="Researchers" />
+        </EntityType>
+        <EntityType Name="Researcher">
+          <Key>
+            <PropertyRef Name="ResearcherID" />
+          </Key>
+          <Property Name="ResearcherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResearcherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PMD_ResearcherID" Type="Int32" />
+          <NavigationProperty Name="Reseacher_Projects" Relationship="Self.FK_Reseacher_Projects_Researchers" FromRole="Researchers" ToRole="Reseacher_Projects" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstMidName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_DS_Variables_Datasets">
+          <End Role="Datasets" Type="Self.Dataset" Multiplicity="0..1" />
+          <End Role="DS_Variables" Type="Self.DS_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Principal>
+            <Dependent Role="DS_Variables">
+              <PropertyRef Name="DatasetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Datasets_Datasets">
+          <End Role="Datasets" Type="Self.Dataset" Multiplicity="0..1" />
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Principal>
+            <Dependent Role="Project_Datasets">
+              <PropertyRef Name="DatasetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Datasets_Projects">
+          <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Project_Datasets" Type="Self.Project_Datasets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Project_Datasets">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseacher_Projects_Projects">
+          <End Role="Projects" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="Reseacher_Projects" Type="Self.Reseacher_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Reseacher_Projects">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseacher_Projects_Researchers">
+          <End Role="Researchers" Type="Self.Researcher" Multiplicity="0..1" />
+          <End Role="Reseacher_Projects" Type="Self.Reseacher_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Researchers">
+              <PropertyRef Name="ResearcherID" />
+            </Principal>
+            <Dependent Role="Reseacher_Projects">
+              <PropertyRef Name="ResearcherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DareToDaSHEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Datasets" EntityType="Self.Dataset" />
+          <EntitySet Name="DS_Variables" EntityType="Self.DS_Variables" />
+          <EntitySet Name="Project_Datasets" EntityType="Self.Project_Datasets" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Reseacher_Projects" EntityType="Self.Reseacher_Projects" />
+          <EntitySet Name="Researchers" EntityType="Self.Researcher" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK_DS_Variables_Datasets" Association="Self.FK_DS_Variables_Datasets">
+            <End Role="Datasets" EntitySet="Datasets" />
+            <End Role="DS_Variables" EntitySet="DS_Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Datasets_Datasets" Association="Self.FK_Project_Datasets_Datasets">
+            <End Role="Datasets" EntitySet="Datasets" />
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Datasets_Projects" Association="Self.FK_Project_Datasets_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseacher_Projects_Projects" Association="Self.FK_Reseacher_Projects_Projects">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Reseacher_Projects" EntitySet="Reseacher_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseacher_Projects_Researchers" Association="Self.FK_Reseacher_Projects_Researchers">
+            <End Role="Researchers" EntitySet="Researchers" />
+            <End Role="Reseacher_Projects" EntitySet="Reseacher_Projects" />
+          </AssociationSet>
+          <EntitySet Name="Researcher_Variables" EntityType="DareToDaSHModel.Researcher_Variables" />
+          <AssociationSet Name="FK_Researcher_Variables_Project_Datasets" Association="DareToDaSHModel.FK_Researcher_Variables_Project_Datasets">
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+            <End Role="Researcher_Variables" EntitySet="Researcher_Variables" />
+          </AssociationSet>
+          <EntitySet Name="Researcher_Documents" EntityType="DareToDaSHModel.Researcher_Documents" />
+          <EntitySet Name="Researcher_Custom_Variables" EntityType="DareToDaSHModel.Researcher_Custom_Variables" />
+          <AssociationSet Name="FK_Researcher_Customer_Variables_Project_Datasets" Association="DareToDaSHModel.FK_Researcher_Customer_Variables_Project_Datasets">
+            <End Role="Project_Datasets" EntitySet="Project_Datasets" />
+            <End Role="Researcher_Custom_Variables" EntitySet="Researcher_Custom_Variables" />
+          </AssociationSet>
+          <EntitySet Name="Users_Unsecure" EntityType="DareToDaSHModel.Users_Unsecure" />
+          <AssociationSet Name="FK_Researcher_Documents_Projects" Association="DareToDaSHModel.FK_Researcher_Documents_Projects">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Researcher_Documents" EntitySet="Researcher_Documents" />
+          </AssociationSet>
+          <FunctionImport Name="OutputSourceDatasets_toJson_byProjectId_DatasetID">
+            <Parameter Name="prmProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="prmProjectDatasetID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Researcher_Variables">
+          <Key>
+            <PropertyRef Name="Researcher_VariableID" />
+          </Key>
+          <Property Name="Researcher_VariableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DS_VariableID" Type="Int32" />
+          <Property Name="Project_Dataset_Id" Type="Int32" />
+          <Property Name="Output_VarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Researcher_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsRestriction" Type="Int32" />
+          <Property Name="IsRestrictionVariabletype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsRestrictionMinRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsRestrictionMaxRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Project_Datasets" Relationship="DareToDaSHModel.FK_Researcher_Variables_Project_Datasets" FromRole="Researcher_Variables" ToRole="Project_Datasets" />
+        </EntityType>
+        <Association Name="FK_Researcher_Variables_Project_Datasets">
+          <End Type="DareToDaSHModel.Project_Datasets" Role="Project_Datasets" Multiplicity="0..1" />
+          <End Type="DareToDaSHModel.Researcher_Variables" Role="Researcher_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Datasets">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Principal>
+            <Dependent Role="Researcher_Variables">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Researcher_Documents">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Name="DocId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="DocumentDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContentType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UploadedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UploadDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Project" Relationship="DareToDaSHModel.FK_Researcher_Documents_Projects" FromRole="Researcher_Documents" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Researcher_Custom_Variables">
+          <Key>
+            <PropertyRef Name="Researcher_Custom_VariableID" />
+          </Key>
+          <Property Name="Researcher_Custom_VariableID" Type="Int32" Nullable="false" />
+          <Property Name="Project_Dataset_Id" Type="Int32" />
+          <Property Name="Output_VarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Researcher_Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DS_VariableID_1" Type="Int32" />
+          <Property Name="DS_Variable1_VarName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DS_VariableID_2" Type="Int32" />
+          <Property Name="DS_Variable2_VarName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Project_Datasets" Relationship="DareToDaSHModel.FK_Researcher_Customer_Variables_Project_Datasets" FromRole="Researcher_Custom_Variables" ToRole="Project_Datasets" />
+        </EntityType>
+        <Association Name="FK_Researcher_Customer_Variables_Project_Datasets">
+          <End Type="DareToDaSHModel.Project_Datasets" Role="Project_Datasets" Multiplicity="0..1" />
+          <End Type="DareToDaSHModel.Researcher_Custom_Variables" Role="Researcher_Custom_Variables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project_Datasets">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Principal>
+            <Dependent Role="Researcher_Custom_Variables">
+              <PropertyRef Name="Project_Dataset_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Users_Unsecure">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Researcher_Documents_Projects">
+          <End Type="DareToDaSHModel.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="DareToDaSHModel.Researcher_Documents" Role="Researcher_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Researcher_Documents">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DareToDaSHModelStoreContainer" CdmEntityContainer="DareToDaSHEntities2">
+          <EntitySetMapping Name="Datasets">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Dataset">
+              <MappingFragment StoreEntitySet="Datasets">
+                <ScalarProperty Name="webURL" ColumnName="webURL" />
+                <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+                <ScalarProperty Name="PMD_DatasetID" ColumnName="PMD_DatasetID" />
+                <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+                <ScalarProperty Name="Abrev" ColumnName="Abrev" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsLive" ColumnName="IsLive" />
+                <ScalarProperty Name="DataDate_From" ColumnName="DataDate_From" />
+                <ScalarProperty Name="DataDate_To" ColumnName="DataDate_To" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DS_Variables">
+            <EntityTypeMapping TypeName="DareToDaSHModel.DS_Variables">
+              <MappingFragment StoreEntitySet="DS_Variables">
+                <ScalarProperty Name="RequiredForDisplay" ColumnName="RequiredForDisplay" />
+                <ScalarProperty Name="DS_VariableID" ColumnName="DS_VariableID" />
+                <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+                <ScalarProperty Name="VarName" ColumnName="VarName" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="CHARACTER_MAXIMUM_LENGTH" ColumnName="CHARACTER_MAXIMUM_LENGTH" />
+                <ScalarProperty Name="Is_Identifiable" ColumnName="Is_Identifiable" />
+                <ScalarProperty Name="Required_ForLinkage" ColumnName="Required_ForLinkage" />
+                <ScalarProperty Name="Can_Release" ColumnName="Can_Release" />
+                <ScalarProperty Name="Output_CodingID" ColumnName="Output_CodingID" />
+                <ScalarProperty Name="VarDescription" ColumnName="VarDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project_Datasets">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Project_Datasets">
+              <MappingFragment StoreEntitySet="Project_Datasets">
+                <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="DatasetID" ColumnName="DatasetID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="DS_Name" ColumnName="DS_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="ExclusionCriteria" ColumnName="ExclusionCriteria" />
+                <ScalarProperty Name="InclusionCriteria" ColumnName="InclusionCriteria" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+                <ScalarProperty Name="ProjectEndDate" ColumnName="ProjectEndDate" />
+                <ScalarProperty Name="ProjectStartDate" ColumnName="ProjectStartDate" />
+                <ScalarProperty Name="ShortTitle" ColumnName="ShortTitle" />
+                <ScalarProperty Name="ProjectTitle" ColumnName="ProjectTitle" />
+                <ScalarProperty Name="Cohort_Desc" ColumnName="Cohort_Desc" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectDescription" ColumnName="ProjectDescription" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="DashIdent" ColumnName="DashIdent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reseacher_Projects">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Reseacher_Projects">
+              <MappingFragment StoreEntitySet="Reseacher_Projects">
+                <ScalarProperty Name="ResearcherProjectsID" ColumnName="ResearcherProjectsID" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ResearcherID" ColumnName="ResearcherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Researchers">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Researcher">
+              <MappingFragment StoreEntitySet="Researchers">
+                <ScalarProperty Name="ResearcherID" ColumnName="ResearcherID" />
+                <ScalarProperty Name="ResearcherName" ColumnName="ResearcherName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PMD_ResearcherID" ColumnName="PMD_ResearcherID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstMidName" ColumnName="FirstMidName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Researcher_Variables">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Variables">
+              <MappingFragment StoreEntitySet="Researcher_Variables">
+                <ScalarProperty Name="IsRestrictionMaxRange" ColumnName="IsRestrictionMaxRange" />
+                <ScalarProperty Name="IsRestrictionMinRange" ColumnName="IsRestrictionMinRange" />
+                <ScalarProperty Name="IsRestrictionVariabletype" ColumnName="IsRestrictionVariabletype" />
+                <ScalarProperty Name="IsRestriction" ColumnName="IsRestriction" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="Researcher_Comments" ColumnName="Researcher_Comments" />
+                <ScalarProperty Name="Output_VarName" ColumnName="Output_VarName" />
+                <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+                <ScalarProperty Name="DS_VariableID" ColumnName="DS_VariableID" />
+                <ScalarProperty Name="Researcher_VariableID" ColumnName="Researcher_VariableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Researcher_Documents">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Documents">
+              <MappingFragment StoreEntitySet="Researcher_Documents">
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="UploadedBy" ColumnName="UploadedBy" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="DocData" ColumnName="DocData" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="DocumentDescription" ColumnName="DocumentDescription" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Researcher_Custom_Variables">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Researcher_Custom_Variables">
+              <MappingFragment StoreEntitySet="Researcher_Custom_Variables">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="DS_Variable2_VarName" ColumnName="DS_Variable2_VarName" />
+                <ScalarProperty Name="DS_VariableID_2" ColumnName="DS_VariableID_2" />
+                <ScalarProperty Name="DS_Variable1_VarName" ColumnName="DS_Variable1_VarName" />
+                <ScalarProperty Name="DS_VariableID_1" ColumnName="DS_VariableID_1" />
+                <ScalarProperty Name="Researcher_Comments" ColumnName="Researcher_Comments" />
+                <ScalarProperty Name="Output_VarName" ColumnName="Output_VarName" />
+                <ScalarProperty Name="Project_Dataset_Id" ColumnName="Project_Dataset_Id" />
+                <ScalarProperty Name="Researcher_Custom_VariableID" ColumnName="Researcher_Custom_VariableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Unsecure">
+            <EntityTypeMapping TypeName="DareToDaSHModel.Users_Unsecure">
+              <MappingFragment StoreEntitySet="Users_Unsecure">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="OutputSourceDatasets_toJson_byProjectId_DatasetID" FunctionName="DareToDaSHModel.Store.OutputSourceDatasets_toJson_byProjectId_DatasetID" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

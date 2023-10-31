@@ -1,0 +1,186 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 25px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    /*   max-width: 280px;*/
+}
+
+
+/* Responsive: Portrait tablets and up */
+    @media screen and (min-width: 1768px) {
+
+        /*.D2Dash {
+        background: url('../content/opis_colour.png') no-repeat center center;
+        position: fixed;
+        width: 100%;
+        height: 485px;*/ /*same height as jumbotron */
+        /*top: 10px;
+        left: 0;
+        z-index: -1;
+    }*/
+
+
+        .jumbotron {
+            padding-top: -50px;
+            height: 185px;
+            padding-left: 30px;
+            color: #395c82;
+            text-shadow: #444 0 1px 1px;
+            background: transparent;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .body-content {
+            padding: 5px;
+        }
+    }
+
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: red;
+    border-color: aqua
+}
+
+
+
+
+.content {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    background-color: white;
+    /* #e8eae6;*/
+    box-sizing: border-box;
+    padding: 5px;
+    z-index: 100;
+    display: none;
+    -ms-transform: translate(-50%,-50%);
+
+
+/*    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);*/
+    /*to hide popup initially*/
+}
+
+
+.navbar {
+    background-color: white;
+  
+}
+ul.nav a:hover {
+    color: black !important;
+}
+
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.block {
+    background-image: url('../Resources/Images/british_isles_sm_2018.png');
+    /*  background-repeat: no-repeat;*/
+    position: relative;
+/*    background-image: linear-gradient(to right, rgba(109, 179, 242, .6), rgba(109, 179, 242, .6)), url('/Resources/Images/british_isles_sm_2018.png');*/
+    background-size: cover, contain;
+    background-position: center, right bottom;
+    background-repeat: no-repeat, no-repeat;
+       padding: 5px;
+    width: 150px;
+    height: 200px;
+    background-size: 50% 50%;
+}
+
+ .block::before {
+     /*   background-color: rgba(0, 0, 0, 0.37);*/
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+ }
+
+.uni_logo {
+    height: 10%;
+    width: 80%;
+}
+
+/*.row {
+    padding: 25px;
+    height: 10px;
+}
+*/
+.h-20 {
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.37);
+    padding: 0;
+    border-color: aquamarine;
+    border: 60px;
+}
+
+
+
+
+
+.conboarder {
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid #1C4392;
+    padding-right:25px;
+}
+
+
+.conboarderRight {
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid #1C4392;
+    float:right;
+    padding-block:25px;
+}
+
+
+
+

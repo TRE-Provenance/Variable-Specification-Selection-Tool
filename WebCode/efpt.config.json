@@ -1,0 +1,65 @@
+﻿{
+   "CodeGenerationMode": 1,
+   "ContextClassName": "DareToDaSHContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data",
+   "OutputPath": "DareModels",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "DaSH_Researcher_Portal",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Datasets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DS_Variables]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Project_Datasets]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Projects]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reseacher_Projects]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Researcher_Variables]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Researchers]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

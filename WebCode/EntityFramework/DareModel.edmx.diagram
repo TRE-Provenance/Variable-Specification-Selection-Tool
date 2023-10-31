@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a7794b40dec402ca34348cd1bce4e20" Name="Diagram1" ZoomLevel="115">
+        <EntityTypeShape EntityType="DareToDaSHModel.Dataset" Width="1.5" PointX="5.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.DS_Variables" Width="1.5" PointX="2.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Project_Datasets" Width="1.5" PointX="7.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Project" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Reseacher_Projects" Width="1.5" PointX="5.375" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Researcher" Width="1.5" PointX="2.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Student" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="DareToDaSHModel.FK_DS_Variables_Datasets" ManuallyRouted="false" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Project_Datasets_Datasets" ManuallyRouted="false" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Project_Datasets_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Reseacher_Projects_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Reseacher_Projects_Researchers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Researcher_Variables" Width="3" PointX="10" PointY="0.625" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Researcher_Variables_Project_Datasets" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Researcher_Documents" Width="3" PointX="10" PointY="9.125" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Researcher_Custom_Variables" Width="3" PointX="10" PointY="5.25" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Researcher_Customer_Variables_Project_Datasets" />
+        <EntityTypeShape EntityType="DareToDaSHModel.Users_Unsecure" Width="1.5" PointX="0.5" PointY="2.625" />
+        <AssociationConnector Association="DareToDaSHModel.FK_Researcher_Documents_Projects" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
