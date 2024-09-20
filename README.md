@@ -97,6 +97,33 @@ Simple login/registration page for demo purposes only – used for linking user 
 *	‘New Project’ button initiates the new project registration process.
 *	‘Go >>’ button takes user to the individual project section.
 
+#### Researcher Project Outline 
+
+![image](https://github.com/user-attachments/assets/fb7f7a48-c65a-4027-be57-274b6c2e8863)
+
+* Project Datasets links to page the allows researchers to select datasets and variables.
+* Save commits entered data to the backend database.
+* Submit For Approval locks the project and dataset selected.  Notification is flagged to the TRL research coordinators that a new project has been submitted.
+
+#### Researcher Selection of Datasets and Variables
+
+![image](https://github.com/user-attachments/assets/af2515bd-3365-4274-a03e-3ff3b75c3633)
+
+
+* ‘Dataset Selection For Project’ displays all available datasets.  
+  - Information icon provides details relating to the dataset.  
+  - ‘Save Dataset selection’ commits the dataset(s) selected to the researcher’s project.
+* ’Dataset Selection’ provides a populated dropdown box of the researcher’s selected datasets.  
+  On selection, the variables are displayed.
+* ‘Custom Variables Selection’ allows the researcher to specify an ‘output name’ and select variables to use in the calculation of the output.
+* List of dataset variables displayed for selection:  
+  - Highlighted fields denote if the field is unavailable for output (identifiable data).  
+  - Information icon provides details relating to the variable (if available).  
+  - Conditions can be applied to each field (e.g., date range, min/max values).  
+  - Output variable name can be customized if the researcher doesn’t require the original variable name.  
+  - Checkbox to select the variable for output.
+* ‘Save variables’ commits the researcher’s selection.
+
 
 
 
