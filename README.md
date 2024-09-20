@@ -1,12 +1,9 @@
-# Variable_Specification_Selection_Tool
-
-# Project Title
-Researcher Variable Selection Tool
+# Researcher Variable Selection Tool
 
 
+# LICENSE
 
-
-
+CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
 
 ## Getting Started
 
